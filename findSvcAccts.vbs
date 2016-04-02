@@ -1,10 +1,3 @@
-Submitted By: Rob Stine
-
-Lists services running under domain accounts, and does this for all the computers in a domain.
-
-Visual Basic
-' findServiceAccounts.vbs 
-'  
 ' This script will enumerate services on all machines in a domain 
 ' to identify domain service accounts currently in use. 
 ' 
