@@ -1,18 +1,3 @@
-Sometimes admins get lazy and configure service accounts to run as Administrator. It's simple and easy and almost always guaranteed to work. But of course that poses all kinds of issues. So here's a script that will query AD for any enabled computer systems, then query those systems for any services running as Administrator. I tried to organize it in Excel, and it works, but I just don't care for the output. Change it if you like. :)
-
-Script
-
-PowerShell
-# This script will query all the computers in your domain for services configured   
-# to run as Administrator, then outputs to Excel.  
-#  
-# To use this script you must install the RSAT tools on Windows Vista or 7  
-# and enable the "Active Directory Module for Windows PowerShell" feature.  
-#  
-#  
-# Created by Joshua Taylor  
-# http://www.joshuastaylor.com  
-  
 import-module ActiveDirectory  
   
 function get-ServiceAccountLogonAsAdmin {  
