@@ -5,6 +5,9 @@
      AcceptEula="yes" 
     />
 
+    <AddLanguage Id=”match” />
+    <AddLanguage Id=”en-us” ShellTransform=”Yes” />
+
     <PIDKEY Value="AAAAABBBBBCCCCCDDDDDEEEEE" />
 
     <Logging Type="verbose" 
