@@ -20,15 +20,21 @@
     <Setting Id="AUTO_ACTIVATE" Value="1" />
     
     <USERNAME Value="dataWeapons" />
+    <USERINITIALS Value="DW" />
     <COMPANYNAME Value="dataWeapons.org" />
-  
+
+    <SetupUpdates
+     CheckForSUpdates="Yes"
+     SUpdateLocation="\\server1\office\updates;\\server2\corpdata\updates"
+    />
+
     <DistributionPoint Location="\\server\share\Office" />
 
     <OptionState Id=”ACCESSFiles” State=”absent” Children=”force” /> 
     <OptionState Id="OptionID" State="absent" Children="force" />
 
     <Command Path="%windir%\system32\msiexec.exe"
-     Args="/i \\server\share\my.msi" 
+     Args="/i \\server\share\my.msi /adminfile \\path\to\office.msp /config \\path\to\config.xml"
      QuietArg="/q" 
      ChainPosition="after" 
      Execute="install"
