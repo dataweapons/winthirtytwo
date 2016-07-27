@@ -1,0 +1,37 @@
+<Configuration Product="ProPlus">
+    <Display Level="none"
+     CompletionNotice="no" 
+     SuppressModal="yes"
+     AcceptEula="yes" 
+    />
+
+    <PIDKEY Value="AAAAABBBBBCCCCCDDDDDEEEEE" />
+
+    <Logging Type="verbose" 
+     Path="%SYSADMINROOT%\Log\AppInst\Office2013" 
+     Template="Microsoft Office 2013 ProPlus Setup(*).txt"
+    />
+
+    <INSTALLLOCATION Value="%programfiles%\Microsoft Office" />
+
+    <LIS CACHEACTION="CacheOnly" />
+    <LIS SOURCELIST Value="\\server1\share\Office15;\\server2\share\Office15" />
+    <Setting Id="SETUP_REBOOT" Value="NEVER" />
+    <Setting Id="AUTO_ACTIVATE" Value="1" />
+    
+    <USERNAME Value="dataWeapons" />
+    <COMPANYNAME Value="dataWeapons.org" />
+  
+    <DistributionPoint Location="\\server\share\Office" />
+
+    <OptionState Id=”ACCESSFiles” State=”absent” Children=”force” /> 
+    <OptionState Id="OptionID" State="absent" Children="force" />
+
+    <Command Path="%windir%\system32\msiexec.exe"
+     Args="/i \\server\share\my.msi" 
+     QuietArg="/q" 
+     ChainPosition="after" 
+     Execute="install"
+    />
+
+</Configuration>
