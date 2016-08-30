@@ -1,34 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
     <title>winthirtytwo by dataweapons</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
-
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/dataweapons/winthirtytwo">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/dataweapons/winthirtytwo/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/dataweapons/winthirtytwo/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <header>
-      <div class="container">
-        <h1>winthirtytwo</h1>
-        <h2>Repository for windows implementation.</h2>
+    <div class="wrapper">
 
-        <section id="downloads">
-          <a href="https://github.com/dataweapons/w32/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/dataweapons/w32/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/dataweapons/w32" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+      <section>
+        <div id="title">
+          <h1>winthirtytwo</h1>
+          <p>Repository for windows implementation.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/dataweapons">dataweapons</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-    <div class="container">
-      <section id="main_content">
-        <p>NOTE: for ballerz yo.</p>
+        <p>for ballerz yo</p>
 
 <h2>
 <a id="00-install" class="anchor" href="#00-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>[00] INSTALL</h2>
@@ -187,8 +197,9 @@ New-MsolFederatedDomain –SupportMultipleDomain –DomainName $dom</pre></div>
 
 <div class="highlight highlight-source-css"><pre>c:[Type == "http://schemas<span class="pl-e">.xmlsoap.org</span>/claims/UPN"] =&gt; issue(Type = "http://schemas<span class="pl-e">.microsoft.com</span>/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c<span class="pl-e">.Value</span>, "^((.<span class="pl-ent">*</span>)([.|@]))?(?&lt;domain&gt;[^.]<span class="pl-ent">*</span>[.].<span class="pl-ent">*</span>)$", "http://${<span class="pl-c1">domain</span>}/adfs/services/trust/"));</pre></div>
       </section>
-    </div>
 
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
