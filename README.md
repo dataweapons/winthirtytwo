@@ -4,7 +4,7 @@ NOTE: for ballerz yo.
 ### Install service bus locally.
 * [Installing and Configuring Service Bus for Windows Server] (https://msdn.microsoft.com/en-us/library/azure/jj193014(v=azure.10).aspx)
 * click [here] (http://go.microsoft.com/fwlink/?LinkID=252361).
-```css
+```powershell
 # Run in Service Bus PowerShell Console
 
 # Create new SB Farm
@@ -70,7 +70,7 @@ Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ### configure office365.
 * start [here] (https://support.office.com/en-us/article/Add-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?CorrelationId=f96b8eb8-166b-4be2-90eb-e9138b03c1f5&ui=en-US&rs=en-US&ad=US)
 * do this :arrow_heading_down:
-```css
+```powershell
 $dom = "<domain.name>"
 
 set-msoldomain -name $dom -IsDefault
@@ -106,6 +106,7 @@ q4QZzAtef7viv4By6RI4xvbjap5iRs3wzWBuRdTT4zKcTZrUkBuyo3rxkmy8dzbh
 hirX2Q+27LBEvf9pmG/Nc7WXlm38UI1tpHw9lYqEOde2bxz7o2hgLcZg8ptJx4ci
 PnB9VyrfTjPutLI4GqSuaMqrYxzjVplNkVMV3ZjJc2Jh8mLiaY7iPwRO3zPMs+Vn
 hb32hqVF14uxWC4DNO5ccaqTKxUKH0LngEo9GItFhjxGlcg0fwI0"
+
 Set-MsolDomainAuthentication –DomainName $dom -FederationBrandName $brand -Authentication Federated -PassiveLogOnUri $PLUri -SigningCertificate $cert -IssuerUri $IssuerUri -ActiveLogOnUri $ActiveSO -LogOffUri $PLUri
 
 Set-MsolPasswordPolicy DomainName $dom -NotificationDays 14 -ValidityPeriod 60 
@@ -115,7 +116,7 @@ Set-MsolPasswordPolicy DomainName $dom -NotificationDays 14 -ValidityPeriod 60
 SynchronizeUpnForManagedUsers-Enable $True
 ```
 ### Setup azure with on premises domain.
-```css
+```powershell
 $cred=Get-Credential
 Connect-MsolService -Credential $cred
 Login-AzureRmAccount -Credential $cred
@@ -132,7 +133,4 @@ New-MsolFederatedDomain –SupportMultipleDomain –DomainName $dom
 ### Support subdomains.
 * Open AD FS Management
 * Right click the Microsoft Online RP trust and choose Edit Claim rules
-* Select the third claim rule, and replace with :arrow_heading_down:
-```css
-c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));
-```
+* Select the third claim rule, and replace with `c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));`
