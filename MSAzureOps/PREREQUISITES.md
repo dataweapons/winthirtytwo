@@ -12,6 +12,42 @@ repository of the buildout used by ballers.
 * http://aka.ms/webpi-azps
 * https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/WindowsAzurePowershellGet.3f.3f.3fnew.appids
 
+```css
+# Install the Azure Resource Manager modules from the PowerShell Gallery
+* Install-Module AzureRM
+
+# Install the Azure Service Management module from the PowerShell Gallery
+* Install-Module Azure
+
+# To make sure the Azure PowerShell module is available after you install
+Get-Module –ListAvailable 
+
+# To login to Azure Resource Manager
+Login-AzureRmAccount
+
+# You can also use a specific Tenant if you would like a faster login experience
+# Login-AzureRmAccount -TenantId xxxx
+
+# To view all subscriptions for your account
+Get-AzureRmSubscription
+
+# To select a default subscription for your current session
+Get-AzureRmSubscription –SubscriptionName “your sub” | Select-AzureRmSubscription
+
+# View your current Azure PowerShell session context
+# This session state is only applicable to the current session and will not affect other sessions
+Get-AzureRmContext
+
+# To select the default storage context for your current session
+Set-AzureRmCurrentStorageAccount –ResourceGroupName “your resource group” –StorageAccountName “your storage account name”
+
+# View your current Azure PowerShell session context
+# Note: the CurrentStorageAccount is now set in your session context
+Get-AzureRmContext
+
+# To list all of the blobs in all of your containers in all of your accounts
+Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
+```
 ## [01] SETUP
 
 ### configure office365.
@@ -64,6 +100,8 @@ hb32hqVF14uxWC4DNO5ccaqTKxUKH0LngEo9GItFhjxGlcg0fwI0"
 ```
 
 * Set-MsolDomainAuthentication –DomainName $dom -FederationBrandName $brand -Authentication Federated -PassiveLogOnUri $PLUri -SigningCertificate $cert -IssuerUri $IssuerUri -ActiveLogOnUri $ActiveSO -LogOffUri $PLUri
+
+* Set-MsolPasswordPolicy DomainName -"contoso.com" -NotificationDays 14 -ValidityPeriod 60 
 
 ### Link domain to office365.
 * SynchronizeUpnForManagedUsers-Enable $True
