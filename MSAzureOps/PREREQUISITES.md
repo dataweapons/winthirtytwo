@@ -2,9 +2,32 @@
 repository of the buildout used by ballers.
 
 ## [00] INSTALL
+### Install service bus locally.
+* Installing and Configuring Service Bus for Windows Server <https://msdn.microsoft.com/en-us/library/azure/jj193014(v=azure.10).aspx>
+* click here <http://go.microsoft.com/fwlink/?LinkID=252361>.
+```css
+# Run in Service Bus PowerShell Console
+
+# Create new SB Farm
+$SBCertificateAutoGenerationKey = ConvertTo-SecureString -AsPlainText -Force -String "A strong auto generation key"
+
+New-SBFarm -SBFarmDBConnectionString 'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True' -InternalPortRangeStart 9000 -HttpsPort 9355 -TcpPort 9354 -MessageBrokerPort 9356 -RunAsName 'userName@domain' -AdminGroup 'BUILTIN\Administrators' -GatewayDBConnectionString 'Data Source=localhost;Initial Catalog=SbGatewayDatabase;Integrated Security=True' -CertificateAutoGenerationKey $SBCertificateAutoGenerationKey -MessageContainerDBConnectionString 'Data Source=localhost;Initial Catalog=ServiceBusDefaultContainer;Integrated Security=True';
+
+
+# Add SB Host
+$SBRunAsPassword = ConvertTo-SecureString -AsPlainText -Force -String ***** Replace with RunAs Password for Service Bus in single quote ******;
+
+Add-SBHost -SBFarmDBConnectionString 'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True' -RunAsPassword $SBRunAsPassword -EnableFirewallRules $true -CertificateAutoGenerationKey $SBCertificateAutoGenerationKey;
+
+# Create new SB Namespace
+New-SBNamespace -Name 'ServiceBusDefaultNamespace' -AddressingScheme 'Path' -ManageUsers 'userName@domain';
+
+# Get SB Client Configuration
+$SBClientConfiguration = Get-SBClientConfiguration -Namespaces 'ServiceBusDefaultNamespace';
+
+```
 
 ### Azure CLI
-
 * http://aka.ms/webpi-azure-cli
 * http://azuresdkscu.blob.core.windows.net/downloads04/azure-cli.0.10.3.msi
 
@@ -109,6 +132,7 @@ hb32hqVF14uxWC4DNO5ccaqTKxUKH0LngEo9GItFhjxGlcg0fwI0"
 ### Setup azure with on premises domain.
 * $cred=Get-Credential
 * Connect-MsolService -Credential $cred
+* Login-AzureRmAccount -Credential $cred
 * Register-AzureADConnectHealthADDSAgent -Credentials $cred
 * Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
 * Update-MsolFederatedDomain
