@@ -27,8 +27,8 @@ $SBClientConfiguration = Get-SBClientConfiguration -Namespaces 'ServiceBusDefaul
 ```
 ### install Azure CLI from [here] (http://aka.ms/webpi-azure-cli)
 
-### install Azure Powershell [here] (http://aka.ms/webpi-azps)
-
+### install Azure Powershell [here] (http://aka.ms/webpi-azps) or :arrow_right:
+### setup azure :arrow_heading_down:
 ```css
 # Install the Azure Resource Manager modules from the PowerShell Gallery
 Install-Module AzureRM
@@ -69,7 +69,7 @@ Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 
 ### configure office365.
 * start [here] (https://support.office.com/en-us/article/Add-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?CorrelationId=f96b8eb8-166b-4be2-90eb-e9138b03c1f5&ui=en-US&rs=en-US&ad=US)
-* do this:
+* do this :arrow_heading_down:
 ```css
 $dom = "<domain.name>"
 
@@ -110,7 +110,7 @@ Set-MsolDomainAuthentication –DomainName $dom -FederationBrandName $brand -Aut
 
 Set-MsolPasswordPolicy DomainName $dom -NotificationDays 14 -ValidityPeriod 60 
 ```
-### Link domain to office365.
+### Link domain to office365. :arrow_heading_down:
 ```css
 SynchronizeUpnForManagedUsers-Enable $True
 ```
@@ -132,7 +132,7 @@ New-MsolFederatedDomain –SupportMultipleDomain –DomainName $dom
 ### Support subdomains.
 * Open AD FS Management
 * Right click the Microsoft Online RP trust and choose Edit Claim rules
-* Select the third claim rule, and replace with:
+* Select the third claim rule, and replace with :arrow_heading_down:
 ```css
 c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));
 ```
