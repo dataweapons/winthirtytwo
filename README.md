@@ -12,7 +12,6 @@ $SBCertificateAutoGenerationKey = ConvertTo-SecureString -AsPlainText -Force -St
 
 New-SBFarm -SBFarmDBConnectionString 'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True' -InternalPortRangeStart 9000 -HttpsPort 9355 -TcpPort 9354 -MessageBrokerPort 9356 -RunAsName 'userName@domain' -AdminGroup 'BUILTIN\Administrators' -GatewayDBConnectionString 'Data Source=localhost;Initial Catalog=SbGatewayDatabase;Integrated Security=True' -CertificateAutoGenerationKey $SBCertificateAutoGenerationKey -MessageContainerDBConnectionString 'Data Source=localhost;Initial Catalog=ServiceBusDefaultContainer;Integrated Security=True';
 
-
 # Add SB Host
 $SBRunAsPassword = ConvertTo-SecureString -AsPlainText -Force -String ***** Replace with RunAs Password for Service Bus in single quote ******;
 
@@ -29,7 +28,7 @@ $SBClientConfiguration = Get-SBClientConfiguration -Namespaces 'ServiceBusDefaul
 
 ### install Azure Powershell [here] (http://aka.ms/webpi-azps) or :arrow_right:
 ### setup azure :arrow_heading_down:
-```css
+```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery
 Install-Module AzureRM
 
@@ -112,7 +111,7 @@ Set-MsolDomainAuthentication –DomainName $dom -FederationBrandName $brand -Aut
 Set-MsolPasswordPolicy DomainName $dom -NotificationDays 14 -ValidityPeriod 60 
 ```
 ### Link domain to office365. :arrow_heading_down:
-```css
+```powershell
 SynchronizeUpnForManagedUsers-Enable $True
 ```
 ### Setup azure with on premises domain.
