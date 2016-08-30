@@ -3,8 +3,8 @@ repository of the buildout used by ballers.
 
 ## [00] INSTALL
 ### Install service bus locally.
-* Installing and Configuring Service Bus for Windows Server <https://msdn.microsoft.com/en-us/library/azure/jj193014(v=azure.10).aspx>
-* click here <http://go.microsoft.com/fwlink/?LinkID=252361>.
+* [Installing and Configuring Service Bus for Windows Server]: (https://msdn.microsoft.com/en-us/library/azure/jj193014(v=azure.10).aspx)
+* click [here]: (http://go.microsoft.com/fwlink/?LinkID=252361).
 ```css
 # Run in Service Bus PowerShell Console
 
