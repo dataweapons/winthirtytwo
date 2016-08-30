@@ -4,41 +4,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>winthirtytwo by dataweapons</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/dataweapons/winthirtytwo">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/dataweapons/winthirtytwo/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/dataweapons/winthirtytwo/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
     <div class="wrapper">
+      <header>
+        <h1>winthirtytwo</h1>
+        <p>Repository for windows implementation.</p>
 
+        <p class="view"><a href="https://github.com/dataweapons/winthirtytwo">View the Project on GitHub <small>dataweapons/winthirtytwo</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/dataweapons/winthirtytwo/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/dataweapons/winthirtytwo/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/dataweapons/winthirtytwo">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
       <section>
-        <div id="title">
-          <h1>winthirtytwo</h1>
-          <p>Repository for windows implementation.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/dataweapons">dataweapons</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
-
-        <p>for ballerz yo</p>
+        <p>NOTE: for ballerz yo.</p>
 
 <h2>
 <a id="00-install" class="anchor" href="#00-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>[00] INSTALL</h2>
@@ -51,24 +41,23 @@
 <li>click <a href="http://go.microsoft.com/fwlink/?LinkID=252361">here</a>.</li>
 </ul>
 
-<div class="highlight highlight-source-css"><pre># Run in Service Bus PowerShell Console
+<div class="highlight highlight-source-powershell"><pre><span class="pl-c"># Run in Service Bus PowerShell Console</span>
 
-# Create new SB Farm
-$SBCertificateAutoGenerationKey = ConvertTo-SecureString -AsPlainText -Force -String "A <span class="pl-ent">strong</span> auto generation key"
+<span class="pl-c"># Create new SB Farm</span>
+<span class="pl-k">$</span><span class="pl-smi">SBCertificateAutoGenerationKey</span> <span class="pl-k">=</span> <span class="pl-c1">ConvertTo-SecureString</span> <span class="pl-k">-</span>AsPlainText <span class="pl-k">-</span>Force <span class="pl-k">-</span>String <span class="pl-s">"A strong auto generation key"</span>
 
-New-SBFarm -SBFarmDBConnectionString 'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True' -InternalPortRangeStart 9000 -HttpsPort 9355 -TcpPort 9354 -MessageBrokerPort 9356 -RunAsName 'userName@domain' -AdminGroup 'BUILTIN\Administrators' -GatewayDBConnectionString 'Data Source=localhost;Initial Catalog=SbGatewayDatabase;Integrated Security=True' -CertificateAutoGenerationKey $SBCertificateAutoGenerationKey -MessageContainerDBConnectionString 'Data Source=localhost;Initial Catalog=ServiceBusDefaultContainer;Integrated Security=True';
+<span class="pl-c1">New-SBFarm</span> <span class="pl-k">-</span>SBFarmDBConnectionString <span class="pl-s">'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True'</span> <span class="pl-k">-</span>InternalPortRangeStart <span class="pl-c1"><span class="pl-c1">9000</span></span> <span class="pl-k">-</span>HttpsPort <span class="pl-c1"><span class="pl-c1">9355</span></span> <span class="pl-k">-</span>TcpPort <span class="pl-c1"><span class="pl-c1">9354</span></span> <span class="pl-k">-</span>MessageBrokerPort <span class="pl-c1"><span class="pl-c1">9356</span></span> <span class="pl-k">-</span>RunAsName <span class="pl-s">'userName@domain'</span> <span class="pl-k">-</span>AdminGroup <span class="pl-s">'BUILTIN\Administrators'</span> <span class="pl-k">-</span>GatewayDBConnectionString <span class="pl-s">'Data Source=localhost;Initial Catalog=SbGatewayDatabase;Integrated Security=True'</span> <span class="pl-k">-</span>CertificateAutoGenerationKey <span class="pl-k">$</span><span class="pl-smi">SBCertificateAutoGenerationKey</span> <span class="pl-k">-</span>MessageContainerDBConnectionString <span class="pl-s">'Data Source=localhost;Initial Catalog=ServiceBusDefaultContainer;Integrated Security=True'</span><span class="pl-k">;</span>
 
+<span class="pl-c"># Add SB Host</span>
+<span class="pl-k">$</span><span class="pl-smi">SBRunAsPassword</span> <span class="pl-k">=</span> <span class="pl-c1">ConvertTo-SecureString</span> <span class="pl-k">-</span>AsPlainText <span class="pl-k">-</span>Force <span class="pl-k">-</span>String <span class="pl-k">*****</span> Replace with RunAs Password <span class="pl-k">for</span> Service Bus <span class="pl-k">in</span> single quote <span class="pl-k">******</span><span class="pl-k">;</span>
 
-# Add SB Host
-$SBRunAsPassword = ConvertTo-SecureString -AsPlainText -Force -String <span class="pl-ent">*****</span> Replace with RunAs Password for Service Bus in single quote <span class="pl-ent">******</span>;
+<span class="pl-c1">Add-SBHost</span> <span class="pl-k">-</span>SBFarmDBConnectionString <span class="pl-s">'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True'</span> <span class="pl-k">-</span>RunAsPassword <span class="pl-k">$</span><span class="pl-smi">SBRunAsPassword</span> <span class="pl-k">-</span>EnableFirewallRules <span class="pl-k">$</span><span class="pl-c1">true</span> <span class="pl-k">-</span>CertificateAutoGenerationKey <span class="pl-k">$</span><span class="pl-smi">SBCertificateAutoGenerationKey</span><span class="pl-k">;</span>
 
-Add-SBHost -SBFarmDBConnectionString 'Data Source=localhost;Initial Catalog=SbManagementDB;Integrated Security=True' -RunAsPassword $SBRunAsPassword -EnableFirewallRules $true -CertificateAutoGenerationKey $SBCertificateAutoGenerationKey;
+<span class="pl-c"># Create new SB Namespace</span>
+<span class="pl-c1">New-SBNamespace</span> <span class="pl-k">-</span>Name <span class="pl-s">'ServiceBusDefaultNamespace'</span> <span class="pl-k">-</span>AddressingScheme <span class="pl-s">'Path'</span> <span class="pl-k">-</span>ManageUsers <span class="pl-s">'userName@domain'</span><span class="pl-k">;</span>
 
-# Create new SB Namespace
-New-SBNamespace -Name 'ServiceBusDefaultNamespace' -AddressingScheme 'Path' -ManageUsers 'userName@domain';
-
-# Get SB Client Configuration
-$SBClientConfiguration = Get-SBClientConfiguration -Namespaces 'ServiceBusDefaultNamespace';
+<span class="pl-c"># Get SB Client Configuration</span>
+<span class="pl-k">$</span><span class="pl-smi">SBClientConfiguration</span> <span class="pl-k">=</span> <span class="pl-c1">Get-SBClientConfiguration</span> <span class="pl-k">-</span>Namespaces <span class="pl-s">'ServiceBusDefaultNamespace'</span><span class="pl-k">;</span>
 </pre></div>
 
 <h3>
@@ -76,43 +65,47 @@ $SBClientConfiguration = Get-SBClientConfiguration -Namespaces 'ServiceBusDefaul
 </h3>
 
 <h3>
-<a id="install-azure-powershell-here" class="anchor" href="#install-azure-powershell-here" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>install Azure Powershell <a href="http://aka.ms/webpi-azps">here</a>
+<a id="install-azure-powershell-here-or-arrow_right" class="anchor" href="#install-azure-powershell-here-or-arrow_right" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>install Azure Powershell <a href="http://aka.ms/webpi-azps">here</a> or <g-emoji alias="arrow_right" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/27a1.png">➡️</g-emoji>
 </h3>
 
-<div class="highlight highlight-source-css"><pre># Install the Azure Resource Manager modules from the PowerShell Gallery
-Install-Module AzureRM
+<h3>
+<a id="setup-azure-arrow_heading_down" class="anchor" href="#setup-azure-arrow_heading_down" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>setup azure <g-emoji alias="arrow_heading_down" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2935.png">⤵️</g-emoji>
+</h3>
 
-# Install the Azure Service Management module from the PowerShell Gallery
-Install-Module Azure
+<div class="highlight highlight-source-powershell"><pre><span class="pl-c"># Install the Azure Resource Manager modules from the PowerShell Gallery</span>
+<span class="pl-c1">Install-Module</span> AzureRM
 
-# To make sure the Azure PowerShell module is available after you install
-Get-Module –ListAvailable 
+<span class="pl-c"># Install the Azure Service Management module from the PowerShell Gallery</span>
+<span class="pl-c1">Install-Module</span> Azure
 
-# To login to Azure Resource Manager
-Login-AzureRmAccount
+<span class="pl-c"># To make sure the Azure PowerShell module is available after you install</span>
+<span class="pl-c1">Get-Module</span> –ListAvailable 
 
-# You can also use <span class="pl-ent">a</span> specific Tenant if you would like <span class="pl-ent">a</span> faster login experience
-# Login-AzureRmAccount -TenantId xxxx
+<span class="pl-c"># To login to Azure Resource Manager</span>
+Login<span class="pl-k">-</span>AzureRmAccount
 
-# To view all subscriptions for your account
-Get-AzureRmSubscription
+<span class="pl-c"># You can also use a specific Tenant if you would like a faster login experience</span>
+<span class="pl-c"># Login-AzureRmAccount -TenantId xxxx</span>
 
-# To <span class="pl-ent">select</span> <span class="pl-ent">a</span> default subscription for your current session
-Get-AzureRmSubscription –SubscriptionName “your <span class="pl-ent">sub</span>” | Select-AzureRmSubscription
+<span class="pl-c"># To view all subscriptions for your account</span>
+<span class="pl-c1">Get-AzureRmSubscription</span>
 
-# View your current Azure PowerShell session context
-# This session state is only applicable to the current session and will not affect other sessions
-Get-AzureRmContext
+<span class="pl-c"># To select a default subscription for your current session</span>
+<span class="pl-c1">Get-AzureRmSubscription</span> –SubscriptionName “your sub” <span class="pl-k">|</span> <span class="pl-c1">Select-AzureRmSubscription</span>
 
-# To <span class="pl-ent">select</span> the default storage context for your current session
-Set-AzureRmCurrentStorageAccount –ResourceGroupName “your resource group” –StorageAccountName “your storage account name”
+<span class="pl-c"># View your current Azure PowerShell session context</span>
+<span class="pl-c"># This session state is only applicable to the current session and will not affect other sessions</span>
+<span class="pl-c1">Get-AzureRmContext</span>
 
-# View your current Azure PowerShell session context
-# Note: the CurrentStorageAccount is now set in your session context
-Get-AzureRmContext
+<span class="pl-c"># To select the default storage context for your current session</span>
+<span class="pl-c1">Set-AzureRmCurrentStorageAccount</span> –ResourceGroupName “your resource group” –StorageAccountName “your storage account name”
 
-# To list all of the blobs in all of your containers in all of your accounts
-Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob</pre></div>
+<span class="pl-c"># View your current Azure PowerShell session context</span>
+<span class="pl-c"># Note: the CurrentStorageAccount is now set in your session context</span>
+<span class="pl-c1">Get-AzureRmContext</span>
+
+<span class="pl-c"># To list all of the blobs in all of your containers in all of your accounts</span>
+<span class="pl-c1">Get-AzureRmStorageAccount</span> <span class="pl-k">|</span> <span class="pl-c1">Get-AzureStorageContainer</span> <span class="pl-k">|</span> <span class="pl-c1">Get-AzureStorageBlob</span></pre></div>
 
 <h2>
 <a id="01-setup" class="anchor" href="#01-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>[01] SETUP</h2>
@@ -123,68 +116,71 @@ Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob</pr
 <ul>
 <li>start <a href="https://support.office.com/en-us/article/Add-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?CorrelationId=f96b8eb8-166b-4be2-90eb-e9138b03c1f5&amp;ui=en-US&amp;rs=en-US&amp;ad=US">here</a>
 </li>
-<li>do this:</li>
+<li>do this <g-emoji alias="arrow_heading_down" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2935.png">⤵️</g-emoji>
+</li>
 </ul>
 
-<div class="highlight highlight-source-css"><pre>$dom = "&lt;domain<span class="pl-e">.name</span>&gt;"
+<div class="highlight highlight-source-powershell"><pre><span class="pl-k">$</span><span class="pl-smi">dom</span> <span class="pl-k">=</span> <span class="pl-s">"&lt;domain.name&gt;"</span>
 
-set-msoldomain -name $dom -IsDefault
-set-MsolDomainAuthentication -Authentication Managed -DomainName $dom
+<span class="pl-c1">set-msoldomain</span> <span class="pl-k">-</span>name <span class="pl-k">$</span><span class="pl-smi">dom</span> <span class="pl-k">-</span>IsDefault
+<span class="pl-c1">set-MsolDomainAuthentication</span> <span class="pl-k">-</span>Authentication Managed <span class="pl-k">-</span>DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span>
 
-<span class="pl-e">#The</span> following commands convert the existing domain to use single sign-on. Notice the certificate is in Base-64 encoding:
-convert-MsolDomainToFederated
+<span class="pl-c">#The following commands convert the existing domain to use single sign-on. Notice the certificate is in Base-64 encoding:</span>
+<span class="pl-c1">convert-MsolDomainToFederated</span>
 
-$brand = "brand Ltd."
-$ActiveSO = "https://adfs.$dom/adfs/services/trust/2005/usernamemixed"
-$PLUri$ = "https://adfs.$dom/adfs/ls"
-$IssuerUri = "https://adfs.$dom/adfs/services/trust"
-$cert = "MIIEQzCCAyugAwIBAgIKYQm1CwAAAAAAEDANBgkqhkiG9w0BAQUFADBIMRMwEQYK
-CZImiZPyLGQBGRYDY29tMR0wGwYKCZImiZPyLGQBGRYNd29vZGdyb3ZlYmFuazES
-MBAGA1UEAxMJRGVudmVyLUNBMB4XDTEwMDExMDA2NDEwMFoXDTExMTExMTAxMTM0
-MFowIzEhMB8GA1UEAxMYZGVudmVyLndvb2Rncm92ZWJhbmsuY29tMIIBIjANBgkq
-hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApUaiuxFkfXf9O5kUSpxOBSBFhjFirBb3
-ddcs2weW/4cMniVNYGanLABVuqltfRHqWz6WZF/98VbqfCaETBaKu/QggcuhMoBc
-yT7E4n35GOFxf8OVUy38VI1BrFon/crs8IUc0pK3qKG0n4rsCRwnpxoEPar0MiSP
-r8jpDZa/eLcMV/1lFifpNXz2v1wKWYRKXrvg1sLJyABSRoAZShxaMcXehS0egmiP
-gYNhvZln2Z/M2Xwy5oh21lAjzbrW2eLmsqr1OTsFO497CBsuoWS4KQUbxf7hVj3T
-tgPXTphJsg6+2606nlJqflsxjpH90ucendRZVPJ1Vs83yMUcPUyA+QIDAQABo4IB
-UjCCAU4wDgYDVR0PAQH/BAQDAgWgMD0GCSsGAQQBgjcVBwQwMC4GJisGAQQBgjcV
-CIP16AeH74RRh62DOIaW7CWEl7BNJ4bS92uFwqxxAgFkAgECMB0GA1UdDgQWBBQ6
-RGMSiX+JPfV4zEGxeXGeFXm1kzAfBgNVHSMEGDAWgBSZzCX7ueHUBH7PY6wVldwn
-N/ntwjA/BgNVHR8EODA2MDSgMqAwhi5odHRwOi8vcGtpLndvb2Rncm92ZWJhbmsu
-Y29tL0NEUC9EZW52ZXItQ0EuY3JsMEoGCCsGAQUFBwEBBD4wPDA6BggrBgEFBQcw
-AoYuaHR0cDovL3BraS53b29kZ3JvdmViYW5rLmNvbS9BSUEvRGVudmVyLUNBLmNy
-dDATBgNVHSUEDDAKBggrBgEFBQcDATAbBgkrBgEEAYI3FQoEDjAMMAoGCCsGAQUF
-BwMBMA0GCSqGSIb3DQEBBQUAA4IBAQCVaxdQ2nO5cpo0AQL+Pk/hXs3JOe+cRD1F
-q4QZzAtef7viv4By6RI4xvbjap5iRs3wzWBuRdTT4zKcTZrUkBuyo3rxkmy8dzbh
-0nXFrIS6onvPQDAxXLgz8b/YnlfnpCH1t/FoH6lqjmsiESYtfj43j8epDg91OhvQ
-hirX2Q+27LBEvf9pmG/Nc7WXlm38UI1tpHw9lYqEOde2bxz7o2hgLcZg8ptJx4ci
-PnB9VyrfTjPutLI4GqSuaMqrYxzjVplNkVMV3ZjJc2Jh8mLiaY7iPwRO3zPMs+Vn
-hb32hqVF14uxWC4DNO5ccaqTKxUKH0LngEo9GItFhjxGlcg0fwI0"
-Set-MsolDomainAuthentication –DomainName $dom -FederationBrandName $brand -Authentication Federated -PassiveLogOnUri $PLUri -SigningCertificate $cert -IssuerUri $IssuerUri -ActiveLogOnUri $ActiveSO -LogOffUri $PLUri
+<span class="pl-k">$</span><span class="pl-smi">brand</span> <span class="pl-k">=</span> <span class="pl-s">"brand Ltd."</span>
+<span class="pl-k">$</span><span class="pl-smi">ActiveSO</span> <span class="pl-k">=</span> <span class="pl-s">"https://adfs.<span class="pl-k">$</span><span class="pl-smi">dom</span>/adfs/services/trust/2005/usernamemixed"</span>
+<span class="pl-k">$</span><span class="pl-smi">PLUri</span>$ <span class="pl-k">=</span> <span class="pl-s">"https://adfs.<span class="pl-k">$</span><span class="pl-smi">dom</span>/adfs/ls"</span>
+<span class="pl-k">$</span><span class="pl-smi">IssuerUri</span> <span class="pl-k">=</span> <span class="pl-s">"https://adfs.<span class="pl-k">$</span><span class="pl-smi">dom</span>/adfs/services/trust"</span>
+<span class="pl-k">$</span><span class="pl-smi">cert</span> <span class="pl-k">=</span> <span class="pl-s">"MIIEQzCCAyugAwIBAgIKYQm1CwAAAAAAEDANBgkqhkiG9w0BAQUFADBIMRMwEQYK</span>
+<span class="pl-s">CZImiZPyLGQBGRYDY29tMR0wGwYKCZImiZPyLGQBGRYNd29vZGdyb3ZlYmFuazES</span>
+<span class="pl-s">MBAGA1UEAxMJRGVudmVyLUNBMB4XDTEwMDExMDA2NDEwMFoXDTExMTExMTAxMTM0</span>
+<span class="pl-s">MFowIzEhMB8GA1UEAxMYZGVudmVyLndvb2Rncm92ZWJhbmsuY29tMIIBIjANBgkq</span>
+<span class="pl-s">hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApUaiuxFkfXf9O5kUSpxOBSBFhjFirBb3</span>
+<span class="pl-s">ddcs2weW/4cMniVNYGanLABVuqltfRHqWz6WZF/98VbqfCaETBaKu/QggcuhMoBc</span>
+<span class="pl-s">yT7E4n35GOFxf8OVUy38VI1BrFon/crs8IUc0pK3qKG0n4rsCRwnpxoEPar0MiSP</span>
+<span class="pl-s">r8jpDZa/eLcMV/1lFifpNXz2v1wKWYRKXrvg1sLJyABSRoAZShxaMcXehS0egmiP</span>
+<span class="pl-s">gYNhvZln2Z/M2Xwy5oh21lAjzbrW2eLmsqr1OTsFO497CBsuoWS4KQUbxf7hVj3T</span>
+<span class="pl-s">tgPXTphJsg6+2606nlJqflsxjpH90ucendRZVPJ1Vs83yMUcPUyA+QIDAQABo4IB</span>
+<span class="pl-s">UjCCAU4wDgYDVR0PAQH/BAQDAgWgMD0GCSsGAQQBgjcVBwQwMC4GJisGAQQBgjcV</span>
+<span class="pl-s">CIP16AeH74RRh62DOIaW7CWEl7BNJ4bS92uFwqxxAgFkAgECMB0GA1UdDgQWBBQ6</span>
+<span class="pl-s">RGMSiX+JPfV4zEGxeXGeFXm1kzAfBgNVHSMEGDAWgBSZzCX7ueHUBH7PY6wVldwn</span>
+<span class="pl-s">N/ntwjA/BgNVHR8EODA2MDSgMqAwhi5odHRwOi8vcGtpLndvb2Rncm92ZWJhbmsu</span>
+<span class="pl-s">Y29tL0NEUC9EZW52ZXItQ0EuY3JsMEoGCCsGAQUFBwEBBD4wPDA6BggrBgEFBQcw</span>
+<span class="pl-s">AoYuaHR0cDovL3BraS53b29kZ3JvdmViYW5rLmNvbS9BSUEvRGVudmVyLUNBLmNy</span>
+<span class="pl-s">dDATBgNVHSUEDDAKBggrBgEFBQcDATAbBgkrBgEEAYI3FQoEDjAMMAoGCCsGAQUF</span>
+<span class="pl-s">BwMBMA0GCSqGSIb3DQEBBQUAA4IBAQCVaxdQ2nO5cpo0AQL+Pk/hXs3JOe+cRD1F</span>
+<span class="pl-s">q4QZzAtef7viv4By6RI4xvbjap5iRs3wzWBuRdTT4zKcTZrUkBuyo3rxkmy8dzbh</span>
+<span class="pl-s">0nXFrIS6onvPQDAxXLgz8b/YnlfnpCH1t/FoH6lqjmsiESYtfj43j8epDg91OhvQ</span>
+<span class="pl-s">hirX2Q+27LBEvf9pmG/Nc7WXlm38UI1tpHw9lYqEOde2bxz7o2hgLcZg8ptJx4ci</span>
+<span class="pl-s">PnB9VyrfTjPutLI4GqSuaMqrYxzjVplNkVMV3ZjJc2Jh8mLiaY7iPwRO3zPMs+Vn</span>
+<span class="pl-s">hb32hqVF14uxWC4DNO5ccaqTKxUKH0LngEo9GItFhjxGlcg0fwI0"</span>
 
-Set-MsolPasswordPolicy DomainName $dom -NotificationDays 14 -ValidityPeriod 60 </pre></div>
+<span class="pl-c1">Set-MsolDomainAuthentication</span> –DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span> <span class="pl-k">-</span>FederationBrandName <span class="pl-k">$</span><span class="pl-smi">brand</span> <span class="pl-k">-</span>Authentication Federated <span class="pl-k">-</span>PassiveLogOnUri <span class="pl-k">$</span><span class="pl-smi">PLUri</span> <span class="pl-k">-</span>SigningCertificate <span class="pl-k">$</span><span class="pl-smi">cert</span> <span class="pl-k">-</span>IssuerUri <span class="pl-k">$</span><span class="pl-smi">IssuerUri</span> <span class="pl-k">-</span>ActiveLogOnUri <span class="pl-k">$</span><span class="pl-smi">ActiveSO</span> <span class="pl-k">-</span>LogOffUri <span class="pl-k">$</span><span class="pl-smi">PLUri</span>
+
+<span class="pl-c1">Set-MsolPasswordPolicy</span> DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span> <span class="pl-k">-</span>NotificationDays <span class="pl-c1"><span class="pl-c1">14</span></span> <span class="pl-k">-</span>ValidityPeriod <span class="pl-c1"><span class="pl-c1">60</span></span> </pre></div>
 
 <h3>
-<a id="link-domain-to-office365" class="anchor" href="#link-domain-to-office365" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Link domain to office365.</h3>
+<a id="link-domain-to-office365-arrow_heading_down" class="anchor" href="#link-domain-to-office365-arrow_heading_down" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Link domain to office365. <g-emoji alias="arrow_heading_down" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2935.png">⤵️</g-emoji>
+</h3>
 
-<div class="highlight highlight-source-css"><pre>SynchronizeUpnForManagedUsers-Enable $True</pre></div>
+<div class="highlight highlight-source-powershell"><pre>SynchronizeUpnForManagedUsers<span class="pl-k">-</span>Enable <span class="pl-k">$</span><span class="pl-c1">True</span></pre></div>
 
 <h3>
 <a id="setup-azure-with-on-premises-domain" class="anchor" href="#setup-azure-with-on-premises-domain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup azure with on premises domain.</h3>
 
-<div class="highlight highlight-source-css"><pre>$cred=Get-Credential
-Connect-MsolService -Credential $cred
-Login-AzureRmAccount -Credential $cred
-Register-AzureADConnectHealthADDSAgent -Credentials $cred
-Get-MsolFederationProperty -DomainName $dom | FL Source, TokenSigningCertificate
-Update-MsolFederatedDomain
-Get-ADFSCertificate –CertificateType token-signing
-Update-ADFSCertificate –CertificateType token-signing
-Set-MSOLAdfscontext -Computer &lt;ADFS server&gt;
-Update-MSOLFederatedDomain –DomainName $dom
-MSOLFederatedDomain -DomainName $dom -SupportMultipleDomain
-New-MsolFederatedDomain –SupportMultipleDomain –DomainName $dom</pre></div>
+<div class="highlight highlight-source-powershell"><pre><span class="pl-k">$</span><span class="pl-smi">cred</span><span class="pl-k">=</span><span class="pl-c1">Get-Credential</span>
+<span class="pl-c1">Connect-MsolService</span> <span class="pl-k">-</span>Credential <span class="pl-k">$</span><span class="pl-smi">cred</span>
+Login<span class="pl-k">-</span>AzureRmAccount <span class="pl-k">-</span>Credential <span class="pl-k">$</span><span class="pl-smi">cred</span>
+<span class="pl-c1">Register-AzureADConnectHealthADDSAgent</span> <span class="pl-k">-</span>Credentials <span class="pl-k">$</span><span class="pl-smi">cred</span>
+<span class="pl-c1">Get-MsolFederationProperty</span> <span class="pl-k">-</span>DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span> <span class="pl-k">|</span> FL Source<span class="pl-k">,</span> TokenSigningCertificate
+<span class="pl-c1">Update-MsolFederatedDomain</span>
+<span class="pl-c1">Get-ADFSCertificate</span> –CertificateType token<span class="pl-k">-</span>signing
+<span class="pl-c1">Update-ADFSCertificate</span> –CertificateType token<span class="pl-k">-</span>signing
+<span class="pl-c1">Set-MSOLAdfscontext</span> <span class="pl-k">-</span>Computer <span class="pl-k">&lt;</span>ADFS server<span class="pl-k">&gt;</span>
+<span class="pl-c1">Update-MSOLFederatedDomain</span> –DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span>
+MSOLFederatedDomain <span class="pl-k">-</span>DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span> <span class="pl-k">-</span>SupportMultipleDomain
+<span class="pl-c1">New-MsolFederatedDomain</span> –SupportMultipleDomain –DomainName <span class="pl-k">$</span><span class="pl-smi">dom</span></pre></div>
 
 <h3>
 <a id="support-subdomains" class="anchor" href="#support-subdomains" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support subdomains.</h3>
@@ -192,14 +188,16 @@ New-MsolFederatedDomain –SupportMultipleDomain –DomainName $dom</pre></div>
 <ul>
 <li>Open AD FS Management</li>
 <li>Right click the Microsoft Online RP trust and choose Edit Claim rules</li>
-<li>Select the third claim rule, and replace with:</li>
+<li>Select the third claim rule, and replace with <code>c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] =&gt; issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?&lt;domain&gt;[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));</code>
+</li>
 </ul>
-
-<div class="highlight highlight-source-css"><pre>c:[Type == "http://schemas<span class="pl-e">.xmlsoap.org</span>/claims/UPN"] =&gt; issue(Type = "http://schemas<span class="pl-e">.microsoft.com</span>/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c<span class="pl-e">.Value</span>, "^((.<span class="pl-ent">*</span>)([.|@]))?(?&lt;domain&gt;[^.]<span class="pl-ent">*</span>[.].<span class="pl-ent">*</span>)$", "http://${<span class="pl-c1">domain</span>}/adfs/services/trust/"));</pre></div>
       </section>
-
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/dataweapons">dataweapons</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     
   </body>
 </html>
