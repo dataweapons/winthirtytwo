@@ -1,8 +1,9 @@
-# MSAzureOPs: repository of the buildout used by ballers.
+# MSAzureOPs
+repository of the buildout used by ballers.
 
 ## [00]INSTALL
 
-## Azure CLI
+### Azure CLI
 
 * http://aka.ms/webpi-azure-cli
 * http://azuresdkscu.blob.core.windows.net/downloads04/azure-cli.0.10.3.msi
@@ -36,6 +37,6 @@
 * Open AD FS Management
 * Right click the Microsoft Online RP trust and choose Edit Claim rules
 * Select the third claim rule, and replace with:
-* ```css
+```css
 c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));
 ```
