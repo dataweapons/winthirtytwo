@@ -1,11 +1,19 @@
 
+In the elder days of Art, 
+    Builders wrought with greatest care,
+            each minute and unseen part; 
+    For the Gods see everywhere.
+    
+    Build to-day, then, strong and sure, 
+    With a firm and ample base; 
+               And ascending and secure
+    Shall to-morrow find its place.
+---
 ## [00] INSTALL
-### Install service bus locally.
-* [Installing and Configuring Service Bus for Windows Server] (https://msdn.microsoft.com/en-us/library/azure/jj193014(v=azure.10).aspx)
-* click [here] (http://go.microsoft.com/fwlink/?LinkID=252361).
+### Install service bus locally
+1. Install the [Service Bus for Windows Server](1) for Windows Server,
+2. Launch the [Service Bus powershell console](2) and follow these steps :arrow_heading_down:
 ```powershell
-# Run in Service Bus PowerShell Console
-
 # Create new SB Farm
 $SBCertificateAutoGenerationKey = ConvertTo-SecureString -AsPlainText -Force -String "A strong auto generation key"
 
@@ -21,12 +29,12 @@ New-SBNamespace -Name 'ServiceBusDefaultNamespace' -AddressingScheme 'Path' -Man
 
 # Get SB Client Configuration
 $SBClientConfiguration = Get-SBClientConfiguration -Namespaces 'ServiceBusDefaultNamespace';
-
 ```
-### install Azure CLI from [here] (http://aka.ms/webpi-azure-cli)
-
-### install Azure Powershell [here] (http://aka.ms/webpi-azps) or :arrow_right:
-### setup azure :arrow_heading_down:
+----
+### install azure components
+1. install Azure CLI from [here] (http://aka.ms/webpi-azure-cli)
+2. install Azure Powershell [here] (http://aka.ms/webpi-azps)
+3. setup azure :arrow_heading_down:
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery
 Install-Module AzureRM
@@ -63,11 +71,11 @@ Get-AzureRmContext
 # To list all of the blobs in all of your containers in all of your accounts
 Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 ```
+----
 ## [01] SETUP
-
 ### configure office365.
-* start [here] (https://support.office.com/en-us/article/Add-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?CorrelationId=f96b8eb8-166b-4be2-90eb-e9138b03c1f5&ui=en-US&rs=en-US&ad=US)
-* do this :arrow_heading_down:
+1. start [here] (https://support.office.com/en-us/article/Add-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?CorrelationId=f96b8eb8-166b-4be2-90eb-e9138b03c1f5&ui=en-US&rs=en-US&ad=US)
+2. do this :arrow_heading_down:
 ```powershell
 $dom = "<domain.name>"
 
@@ -109,10 +117,12 @@ Set-MsolDomainAuthentication –DomainName $dom -FederationBrandName $brand -Aut
 
 Set-MsolPasswordPolicy DomainName $dom -NotificationDays 14 -ValidityPeriod 60 
 ```
+----
 ### Link domain to office365. :arrow_heading_down:
 ```powershell
 SynchronizeUpnForManagedUsers-Enable $True
 ```
+----
 ### Setup azure with on premises domain.
 ```powershell
 $cred=Get-Credential
@@ -128,7 +138,12 @@ Update-MSOLFederatedDomain –DomainName $dom
 MSOLFederatedDomain -DomainName $dom -SupportMultipleDomain
 New-MsolFederatedDomain –SupportMultipleDomain –DomainName $dom
 ```
+----
 ### Support subdomains.
 * Open AD FS Management
 * Right click the Microsoft Online RP trust and choose Edit Claim rules
 * Select the third claim rule, and replace with `c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));`
+
+
+[1]: https://msdn.microsoft.com/en-us/library/azure/jj193014(v=azure.10).aspx
+[2]: http://go.microsoft.com/fwlink/?LinkID=252361
