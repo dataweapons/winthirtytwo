@@ -1,4 +1,3 @@
-NOTE: for ballerz yo.
 
 ## [00] INSTALL
 ### Install service bus locally.
